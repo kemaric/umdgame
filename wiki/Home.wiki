@@ -4,7 +4,9 @@
 
 == How to get the code and start contributing ==
 
-
+ 1. Install Eclipse
+ 1. Install Subversion
+ 1. Install Subclipse
 = Details =
 
 Add your content here.  Format your content with:
