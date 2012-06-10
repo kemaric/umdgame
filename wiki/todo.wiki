@@ -1,7 +1,3 @@
-#To-Do list
-
-#Home
-
 = To-Do List =
 
  * Fix the Background (Splash, Home, Quiz)
@@ -16,5 +12,3 @@
  * More try-catch statements so you don't see error messages
  * Cannot press back to get to splash screen
  
-
-
