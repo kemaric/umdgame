@@ -246,7 +246,7 @@ public class RealTriviaGameActivity extends Activity {
 
 	public void PlayWithRawFiles() throws IOException {   
 
-		String  delims = "[,]";
+		String  delims = "[~]";
 		list = new ArrayList< Questions> () ;
 
 		String str="";
