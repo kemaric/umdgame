@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 import android.app.Activity;
@@ -71,21 +70,21 @@ public class RealTriviaGameActivity extends Activity {
 		 * the quiz will continue until all the questions in templist have been answered 
 		 */
 
-	//	this loop will add 10 random questions to tempList
-				for (int i =0 ; i< 10 ; i++ ){
-					/* rgen 
-					 * Returns a pseudo-random uniformly distributed int in the half-open range [0, n). 
-					 */
-					int index=	rgen.nextInt(tempListCopy.size());
-					tempList.add(tempListCopy.get(index));
-					tempListCopy.remove(index);
-		
-				}
+		//	this loop will add 10 random questions to tempList
+		for (int i =0 ; i< 10 ; i++ ){
+			/* rgen 
+			 * Returns a pseudo-random uniformly distributed int in the half-open range [0, n). 
+			 */
+			int index=	rgen.nextInt(tempListCopy.size());
+			tempList.add(tempListCopy.get(index));
+			tempListCopy.remove(index);
+
+		}
 
 
 		//tempList.addAll(list);// this is only until we get enough questions
 		//Collections.shuffle(tempList);
-		 tempListCopy.addAll(tempList);
+		tempListCopy.addAll(tempList);
 		tempListCopy.clear();
 
 		loadNewQuestion();
@@ -197,18 +196,18 @@ public class RealTriviaGameActivity extends Activity {
 
 		}
 
-//		for (int i = 0 ;  i<= tempList.size()-1 ; i++){
-//			if (tempList.get(i).isAnswerdCorrectly()){
-//				correct++;
-//				result+=("you answered question "+ (i+1)+ " correctly with: "  + tempList.get(i).getCorrectAns() +"\n" );
-//				dis.setText( result);
-//			}	
-//			else{
-//				result+=("you answered question "+ (i+1)+ " incorrectly with: "  +tempList.get(i).getUserAnswer() + " the correct answer is: " + tempList.get(i).getCorrectAns()  +"\n" );
-//				dis.setText(result);
-//
-//			}
-//		}
+		//		for (int i = 0 ;  i<= tempList.size()-1 ; i++){
+		//			if (tempList.get(i).isAnswerdCorrectly()){
+		//				correct++;
+		//				result+=("you answered question "+ (i+1)+ " correctly with: "  + tempList.get(i).getCorrectAns() +"\n" );
+		//				dis.setText( result);
+		//			}	
+		//			else{
+		//				result+=("you answered question "+ (i+1)+ " incorrectly with: "  +tempList.get(i).getUserAnswer() + " the correct answer is: " + tempList.get(i).getCorrectAns()  +"\n" );
+		//				dis.setText(result);
+		//
+		//			}
+		//		}
 
 
 

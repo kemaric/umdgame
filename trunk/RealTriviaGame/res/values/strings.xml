@@ -3,5 +3,7 @@
 
     <string name="hello">Hello World, RealTriviaGameActivity!</string>
     <string name="app_name">RealTriviaGame</string>
-
+    <string name="contact_string">For more information about our club or if you want to 
+        report a bug please email us at mobileappdevelopersclub@gmail.com\nWe 
+        appreciate your input! </string>
 </resources>
