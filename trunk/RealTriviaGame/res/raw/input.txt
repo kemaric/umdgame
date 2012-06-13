@@ -44,3 +44,5 @@ What is the slogan which is the rallying cry for school pride?~"Fear the turtle"
 Which of these movies has featured UMCP?~Hangover~American  Pie~Education the best policy~National Treasure: Book of secrets
 How many gate houses are on campus?~5~6~7~4
 Where is the orientation office located?~Stamp~Visiting Center~Armory~Cole Field house
+What Building is located directly across Stamp?~DOTS~Cole Field House~Hornbake library~Health Center
+If you're right in front of the stamp main entrance, what direction are you facing on campus?~South~East~West~North
