@@ -26,4 +26,14 @@ public class SplashScreen extends Activity {
 		timer.start();
 
 	}
+	/**
+	 * This overriden method ensures that the splash doesn't come back
+	 * if the user presses the back button on their phone.
+	 */
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		finish();/*pretty much kills this activity as soon as the 5 seconds is over*/
+	}
 }
