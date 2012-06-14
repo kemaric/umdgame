@@ -105,6 +105,8 @@ public class RealTriviaGameActivity extends Activity {
 
 		// Populate radio buttons 
 		rBtn0.setText(temp[0]);
+		/*Ely this is causing a problem because when I tried to play the game and I click the first radio button it doesnt select -sometimes- 
+		 * we'll  have to change it. I'm currently thinking of what we can do - bori*/
 		rBtn0.setChecked(false); // by default the first radio button is selected, This is un-selecting the radio button 
 		rBtn1.setText(temp[1]);
 		rBtn2.setText(temp[2]);
@@ -139,7 +141,7 @@ public class RealTriviaGameActivity extends Activity {
 
 
 	/***********************************************************************************
-	 * Action listener for the 'submit' button in the main.xlm.
+	 * Action listener for the 'submit' button in the main.xml.
 	 * Onclick this button will grade the user answer
 	 * if at the last question the Stats get printed
 	 * if not the last question the new question is loaded. 

@@ -46,3 +46,6 @@ How many gate houses are on campus?~5~6~7~4
 Where is the orientation office located?~Stamp~Visiting Center~Armory~Cole Field house
 What Building is located directly across Stamp?~DOTS~Cole Field House~Hornbake library~Health Center
 If you're right in front of the stamp main entrance, what direction are you facing on campus?~South~East~West~North
+What are the colors of the UM-shuttle bus?~Red and Gold~Red and Blue~White and Black~Red and White
+What is the name of the math building~Samuel Martin hall~Isaac Newton hall~Kim jeoung hall~Glenn L. Martin hall
+
