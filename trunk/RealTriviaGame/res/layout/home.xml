@@ -6,12 +6,13 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvBanner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="250dp"
         android:text="UMCP Trivia Game"
+        android:textColor="#FFCC00"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
