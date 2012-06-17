@@ -14,7 +14,6 @@ public class HomeScreen extends Activity {
 
 	Button startQuiz,contactUsActivity;
 	Typeface font;
-	Context context;
 	TextView banner;
 	
 	public void ContentManager(Context context) {

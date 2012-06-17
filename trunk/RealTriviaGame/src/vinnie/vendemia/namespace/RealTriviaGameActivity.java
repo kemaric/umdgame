@@ -9,6 +9,7 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
@@ -31,14 +32,19 @@ public class RealTriviaGameActivity extends Activity {
 	int i = 0;
 	Button submit;
 	Random rgen = new Random();  // Random number generator
+	Typeface font;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		font = Typeface.createFromAsset(getAssets(), "Dragon.ttf");
 
 		question = (TextView) findViewById(R.id.view);
+		
+		//Sets the font of the question
+		question.setTypeface(font);
 		display = (TextView) findViewById(R.id.display);
 
 		submit= (Button) findViewById(R.id.button1);
@@ -48,6 +54,12 @@ public class RealTriviaGameActivity extends Activity {
 		rBtn1 = (RadioButton) findViewById(R.id.radio1);
 		rBtn2 = (RadioButton) findViewById(R.id.radio2);
 		rBtn3 = (RadioButton) findViewById(R.id.radio3);
+		
+		//Sets the font of the buttons
+		rBtn0.setTypeface(font);
+		rBtn1.setTypeface(font);
+		rBtn2.setTypeface(font);
+		rBtn3.setTypeface(font);
 
 		//open, read, and parse text file in to questions
 		try {
