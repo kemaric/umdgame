@@ -4,22 +4,22 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Questions {
-private String question; 
-private String[] answers;
-private String correctAns;
-private boolean isAnswerd, answerdCorrectly;
-private String userAnswer;
-	
+	private String question; 
+	private String[] answers;
+	private String correctAns;
+	private boolean isAnswerd, answerdCorrectly;
+	private String userAnswer;
+
 	public Questions(String[] temp){
-	
+
 		this.question= temp[0];
-		
+
 		answers= new String[4];
 		this.answers[0]= temp[1];
 		this.answers[1]= temp[2];
 		this.answers[2]= temp[3];
 		this.answers[3]= temp[4];
-		
+
 		this.correctAns= temp[4];
 	}
 
@@ -32,7 +32,7 @@ private String userAnswer;
 	 * @return Shuffled array of answers
 	 */
 	public String[] getAnswers() {
-		
+
 		Collections.shuffle(Arrays.asList(answers));
 		return answers;
 	}
