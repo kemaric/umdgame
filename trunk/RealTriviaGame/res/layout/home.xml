@@ -12,15 +12,15 @@
         android:layout_gravity="center"
         android:layout_marginTop="250dp"
         android:text="UMCP Trivia Game"
-        android:textColor="#FFCC00"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFCC00" />
 
     <Button
         android:id="@+id/startButton"
         android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
         android:layout_marginLeft="40dp"
+        android:layout_marginTop="60dp"
         android:text="Take the Quiz!" />
 
     <Button

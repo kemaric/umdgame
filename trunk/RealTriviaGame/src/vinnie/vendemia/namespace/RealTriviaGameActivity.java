@@ -9,9 +9,15 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -33,11 +39,15 @@ public class RealTriviaGameActivity extends Activity {
 	Button submit;
 	Random rgen = new Random();  // Random number generator
 	Typeface font;
-
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		/*The next two lines of code gets rid of the title and makes the app fullscreen. We want to do it right
+		 * before we set the content view*/
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.main);
 		font = Typeface.createFromAsset(getAssets(), "Dragon.ttf");
 
@@ -198,13 +208,13 @@ public class RealTriviaGameActivity extends Activity {
 			if (cur.isAnswerdCorrectly()){
 				correct++;
 				result+=(cur.getQuestion()+ "\n");
-				result+=("you answered correctly with: "  + cur.getCorrectAns() +"\n\n" );
+				result+=("You answered correctly with: "  + cur.getCorrectAns() +"\n\n" );
 				dis.setText( result);
 
 			}	
 			else{
 				result+=(cur.getQuestion()+ "\n");
-				result+=("you answered incorrectly with: "  +cur.getUserAnswer() + "\n the corrent answer is: " + cur.getCorrectAns()  +"\n\n" );
+				result+=("You answered incorrectly with: "  +cur.getUserAnswer() + "\nThe corrent answer is: " + cur.getCorrectAns()  +"\n\n" );
 				dis.setText(result );
 			}	
 
