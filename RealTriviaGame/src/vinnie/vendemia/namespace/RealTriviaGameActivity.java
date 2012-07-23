@@ -9,12 +9,8 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -60,6 +56,7 @@ public class RealTriviaGameActivity extends Activity {
 		submit= (Button) findViewById(R.id.button1);
 		submit.setText("Submit");	
 		RDG1 =(RadioGroup)findViewById(R.id.radioGroup1);
+		
 		rBtn0 = (RadioButton) findViewById(R.id.radio0);
 		rBtn1 = (RadioButton) findViewById(R.id.radio1);
 		rBtn2 = (RadioButton) findViewById(R.id.radio2);
@@ -70,6 +67,8 @@ public class RealTriviaGameActivity extends Activity {
 		rBtn1.setTypeface(font);
 		rBtn2.setTypeface(font);
 		rBtn3.setTypeface(font);
+		
+		RDG1.clearCheck() ; // clear the default selection of  first radio button in radio group
 
 		//open, read, and parse text file in to questions
 		try {
@@ -141,24 +140,33 @@ public class RealTriviaGameActivity extends Activity {
 	 * 3) sets the "IsAnswerd" field of the current question to 'true'
 	 * uses the global variable 'count' as the index of tempList 
 	 *********************************************************************************************/
-	private void chechQuestion(){
+	private int chechQuestion(){
 
 		// finding the radio button selected by the user and save it in a 'temp' radio button
+		
 		int id =  RDG1.getCheckedRadioButtonId();
-		temp =(RadioButton) findViewById(id);
-		/*
-		 * WE NEED TO ADD THIS!
-		 * need to put in a null check to make sure a radio button was selected 
-		 * otherwise if user presses the button without selecting a radio button this code will crash
-		 */
-
-		if (temp.getText() != null && temp.getText().equals( tempList.get(count).getCorrectAns() ) ){
-			tempList.get(count).setAnswerdCorrectly(true);
-		}else {
-			tempList.get(count).setAnswerdCorrectly(false);
+		
+		if (id != -1 ) { 
+			temp =(RadioButton) findViewById(id);
+			/*
+			 * WE NEED TO ADD THIS!
+			 * need to put in a null check to make sure a radio button was selected 
+			 * otherwise if user presses the button without selecting a radio button this code will crash
+			 */
+	
+			if (temp.getText() != null && temp.getText().equals( tempList.get(count).getCorrectAns() ) ){
+				tempList.get(count).setAnswerdCorrectly(true);
+			}else {
+				tempList.get(count).setAnswerdCorrectly(false);
+			}
+			tempList.get(count).setUserAnswer((String) temp.getText());
+			tempList.get(count).setIsAnswerd(true);
+			 
 		}
-		tempList.get(count).setUserAnswer((String) temp.getText());
-		tempList.get(count).setIsAnswerd(true);
+		
+
+		return id ;
+		
 	}
 
 
@@ -180,16 +188,19 @@ public class RealTriviaGameActivity extends Activity {
 		 * 4) end function. 
 		 */
 		if (tempList.size()-1 == count ){
-			chechQuestion();
-			submit.setEnabled(false);
-			printStats2();
-			return;
+			if ( chechQuestion()!= -1){ // checkQuestion() will return -1 if no answer was selected
+				submit.setEnabled(false);
+				printStats2();
+				return;
+			}
 		}
-
-		chechQuestion(); // we are not at the last question 
-		count++; // increment global variable used for the index of tempList.
-		loadNewQuestion(); // lead the new question's values and fields .
-		temp.setChecked(false);//un-check current radio button.
+// we are not at the last question 
+		if ( chechQuestion()!= -1){ 
+			count++; // increment global variable used for the index of tempList.
+			loadNewQuestion(); // lead the new question's values and fields .
+			RDG1.clearCheck() ;
+			//temp.setChecked(false);//un-check current radio button.
+		}
 	}
 
 
