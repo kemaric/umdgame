@@ -9,11 +9,13 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -207,27 +209,76 @@ public class RealTriviaGameActivity extends Activity {
 
 
 	private void printStats2 (){
+	
 		String result="";
 		setContentView(R.layout.results);
-		TextView dis=(TextView) findViewById(R.id.textView1); 
+		
+		//create define our 11 textVews 1 for each questions and one for the final result
+		TextView q1d=(TextView) findViewById(R.id.textView1); 
+		TextView q2d=(TextView) findViewById(R.id.textView2); 
+		TextView q3d=(TextView) findViewById(R.id.textView3); 
+		TextView q4d=(TextView) findViewById(R.id.textView4); 
+		TextView q5d=(TextView) findViewById(R.id.textView5); 
+		TextView q6d=(TextView) findViewById(R.id.textView6); 
+		TextView q7d=(TextView) findViewById(R.id.textView7); 
+		TextView q8d=(TextView) findViewById(R.id.textView8); 
+		TextView q9d=(TextView) findViewById(R.id.textView9); 
+		TextView q10d=(TextView) findViewById(R.id.textView10); 
+		TextView fin=(TextView) findViewById(R.id.textViewTotal); 
+		
+		//define 10 image 1 for each question
+		//q = question , i = image
+		ImageView q1i=(ImageView) findViewById(R.id.imageView1); 
+		ImageView q2i=(ImageView) findViewById(R.id.imageView2); 
+		ImageView q3i=(ImageView) findViewById(R.id.imageView3); 
+		ImageView q4i=(ImageView) findViewById(R.id.imageView4); 
+		ImageView q5i=(ImageView) findViewById(R.id.imageView5); 
+		ImageView q6i=(ImageView) findViewById(R.id.imageView6); 
+		ImageView q7i=(ImageView) findViewById(R.id.imageView7); 
+		ImageView q8i=(ImageView) findViewById(R.id.imageView8); 
+		ImageView q9i=(ImageView) findViewById(R.id.imageView9); 
+		ImageView q10i=(ImageView) findViewById(R.id.imageView10);
+		
+		
+		// put textVews and ImageVews in Arrays
+		TextView myr[] = {q1d,q2d,q3d,q4d,q5d,q6d,q7d,q8d,q9d,q10d};
+		ImageView myImageArray[] = {q1i,q2i,q3i,q4i,q5i,q6i,q7i,q8i,q9i,q10i};
+		
+		
+		
+		
+		//TextView dis=(TextView) findViewById(R.id.textView1); 
+		//dis.setBackgroundColor(Color.GREEN);
 		Button goHome = (Button) findViewById(R.id.goHome); 
 		Button reStart = (Button) findViewById(R.id.reTakeQuiz); 
-
+		
+		
 		correct= 0;
-		//int i=1 ; // counter for question numbers
+		int i=0 ; // counter for question numbers 0 indexed
 		for (Questions cur : tempList){
 			if (cur.isAnswerdCorrectly()){
 				correct++;
 				result+=(cur.getQuestion()+ "\n");
 				result+=("You answered correctly with: "  + cur.getCorrectAns() +"\n\n" );
-				dis.setText( result);
+				//dis.setText( result);
+				myr[i].setText( result);
+				//myr[i].setBackgroundColor(Color.GREEN);
+				myr[i].setTextColor(Color.GREEN);
+				myImageArray[i].setImageResource(R.drawable.check); 
 
 			}	
 			else{
 				result+=(cur.getQuestion()+ "\n");
 				result+=("You answered incorrectly with: "  +cur.getUserAnswer() + "\nThe corrent answer is: " + cur.getCorrectAns()  +"\n\n" );
-				dis.setText(result );
+				//dis.setText(result );
+				myr[i].setText(result);
+				//myr[i].setBackgroundColor(Color.RED);
+				myr[i].setTextColor(Color.RED);
+				myImageArray[i].setImageResource(R.drawable.x);
 			}	
+			
+			i++;
+			result="";
 
 		}
 
@@ -247,10 +298,12 @@ public class RealTriviaGameActivity extends Activity {
 
 
 
-		result+=("you got " + correct + " correct out of " + tempList.size() +"\n"  );
+		//result+=("you got " + correct + " correct out of " + tempList.size() +"\n"  );
 
-
-		dis.setText(result);
+		fin.setText("you got " + correct + " correct out of " + tempList.size() +"\n"  );
+		fin.setBackgroundColor(Color.GRAY);
+		
+		//dis.setText(result);
 
 
 
