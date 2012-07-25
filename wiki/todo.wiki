@@ -8,7 +8,7 @@
   * http://androidjava.wordpress.com/2010/09/17/images-in-textview/
  * Get rid of banner at the top
  * Text formatting (Larger text size, different font) 
- * Must select a question to submit and answer
+ * Must select a question to submit and answer 
  * More try-catch statements so you don't see error messages
  * Cannot press back to get to splash screen
  
