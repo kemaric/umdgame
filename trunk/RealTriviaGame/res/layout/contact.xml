@@ -5,12 +5,6 @@
     android:background="@drawable/realtriviabackground"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/HomeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go Home" />
-
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -19,5 +13,13 @@
         android:gravity="center"
         android:text="@string/contact_string"
         android:textSize="19dp" />
+
+    <Button
+        android:layout_gravity="center"
+        android:layout_marginTop="-130dp"
+        android:id="@+id/HomeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home" />
 
 </LinearLayout>
