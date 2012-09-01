@@ -74,7 +74,7 @@ public class RealTriviaGameActivity extends Activity {
 
 		//open, read, and parse text file in to questions
 		try {
-
+			/*This gets all the questions*/
 			PlayWithRawFiles();
 
 		} catch (IOException e) {
@@ -128,8 +128,6 @@ public class RealTriviaGameActivity extends Activity {
 
 		// Populate radio buttons 
 		rBtn0.setText(temp[0]);
-		/*Ely this is causing a problem because when I tried to play the game and I click the first radio button it doesnt select -sometimes- 
-		 * we'll  have to change it. I'm currently thinking of what we can do - bori*/
 		rBtn0.setChecked(false); // by default the first radio button is selected, This is un-selecting the radio button 
 		rBtn1.setText(temp[1]);
 		rBtn2.setText(temp[2]);
@@ -199,12 +197,11 @@ public class RealTriviaGameActivity extends Activity {
 // we are not at the last question 
 		if ( chechQuestion()!= -1){ 
 			count++; // increment global variable used for the index of tempList.
-			loadNewQuestion(); // lead the new question's values and fields .
+			loadNewQuestion(); // load the new question's values and fields .
 			RDG1.clearCheck() ;
 			//temp.setChecked(false);//un-check current radio button.
 		}
 	}
-
 
 
 
@@ -244,7 +241,8 @@ public class RealTriviaGameActivity extends Activity {
 		TextView myr[] = {q1d,q2d,q3d,q4d,q5d,q6d,q7d,q8d,q9d,q10d};
 		ImageView myImageArray[] = {q1i,q2i,q3i,q4i,q5i,q6i,q7i,q8i,q9i,q10i};
 		
-		
+		tempList.get(count).setUserAnswer((String) temp.getText());
+	
 		
 		
 		//TextView dis=(TextView) findViewById(R.id.textView1); 
