@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -37,7 +38,7 @@ public class RealTriviaGameActivity extends Activity {
 	Button submit;
 	Random rgen = new Random();  // Random number generator
 	Typeface font;
-	
+	MediaPlayer sound;
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class RealTriviaGameActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.main);
+		sound = MediaPlayer.create(this, R.raw.victory);
 		font = Typeface.createFromAsset(getAssets(), "Dragon.ttf");
 
 		question = (TextView) findViewById(R.id.view);
@@ -318,9 +320,11 @@ public class RealTriviaGameActivity extends Activity {
 
 		reStart.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				sound.start();
 				Intent openTriviaGame = new 
 						Intent("vinnie.vendemia.namespace.REALTRIVIAGAMEACTIVITY");
 				startActivity(openTriviaGame);
+				
 			}
 		});
 

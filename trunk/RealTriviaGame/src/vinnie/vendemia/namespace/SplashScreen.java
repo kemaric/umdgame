@@ -24,7 +24,7 @@ public class SplashScreen extends Activity {
 					e.printStackTrace();
 				}finally {
 					Intent openTriviaGame = new 
-							Intent("vinnie.vendemia.namespace.HOMESCREEN");
+							Intent("vinnie.vendemia.namespace.JOINSPLASH");
 					startActivity(openTriviaGame);
 				}
 			}
