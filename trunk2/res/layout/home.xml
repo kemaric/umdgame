@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/realtriviabackground"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvBanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="250dp"
+        android:text="UMCP Trivia Game"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFCC00" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="60dp"
+        android:text="Take the Quiz!" />
+
+    <Button
+        android:id="@+id/contactButton"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="-48dp"
+        android:text="Contact Us" />
+
+</LinearLayout>
