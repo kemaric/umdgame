@@ -262,7 +262,7 @@ public class RealTriviaGameActivity extends Activity {
 				myr[i].setText( result);
 				//myr[i].setBackgroundColor(Color.GREEN);
 				myr[i].setTextColor(Color.GREEN);
-				myImageArray[i].setImageResource(R.drawable.check); 
+				myImageArray[i].setImageResource(R.drawable.new_check72); 
 
 			}	
 			else{
@@ -272,7 +272,7 @@ public class RealTriviaGameActivity extends Activity {
 				myr[i].setText(result);
 				//myr[i].setBackgroundColor(Color.RED);
 				myr[i].setTextColor(Color.RED);
-				myImageArray[i].setImageResource(R.drawable.x);
+				myImageArray[i].setImageResource(R.drawable.new_x72);
 			}	
 			
 			i++;
