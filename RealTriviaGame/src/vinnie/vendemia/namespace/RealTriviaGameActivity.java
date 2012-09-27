@@ -23,8 +23,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-
 public class RealTriviaGameActivity extends Activity {
 
 	ArrayList < Questions > list ;
@@ -39,14 +37,17 @@ public class RealTriviaGameActivity extends Activity {
 	Random rgen = new Random();  // Random number generator
 	Typeface font;
 	MediaPlayer sound;
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		/*The next two lines of code gets rid of the title and makes the app fullscreen. We want to do it right
 		 * before we set the content view*/
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
 		setContentView(R.layout.main);
 		sound = MediaPlayer.create(this, R.raw.victory);
 		font = Typeface.createFromAsset(getAssets(), "Dragon.ttf");
@@ -196,7 +197,7 @@ public class RealTriviaGameActivity extends Activity {
 				return;
 			}
 		}
-// we are not at the last question 
+		// we are not at the last question 
 		if ( chechQuestion()!= -1){ 
 			count++; // increment global variable used for the index of tempList.
 			loadNewQuestion(); // load the new question's values and fields .
@@ -206,13 +207,19 @@ public class RealTriviaGameActivity extends Activity {
 	}
 
 
+	/********************************************************************************
+	 * This Method 
+	 * 1) Creates set number of TextViews and ImageViews.
+	 * 2) Populates the TextViews
+	 * 3)
+	 */
 
 	private void printStats2 (){
 	
 		String result="";
 		setContentView(R.layout.results);
 		
-		//create define our 11 textVews 1 for each questions and one for the final result
+		//create and  define our 11 textViews 1 for each questions and one for the final result
 		TextView q1d=(TextView) findViewById(R.id.textView1); 
 		TextView q2d=(TextView) findViewById(R.id.textView2); 
 		TextView q3d=(TextView) findViewById(R.id.textView3); 
@@ -246,7 +253,6 @@ public class RealTriviaGameActivity extends Activity {
 		tempList.get(count).setUserAnswer((String) temp.getText());
 	
 		
-		
 		//TextView dis=(TextView) findViewById(R.id.textView1); 
 		//dis.setBackgroundColor(Color.GREEN);
 		Button goHome = (Button) findViewById(R.id.goHome); 
@@ -269,7 +275,9 @@ public class RealTriviaGameActivity extends Activity {
 			}	
 			else{
 				result+=(cur.getQuestion()+ "\n");
-				result+=("You answered incorrectly with: "  +cur.getUserAnswer() + "\nThe corrent answer is: " + cur.getCorrectAns()  +"\n\n" );
+				result+=("You answered incorrectly with: "  +cur.getUserAnswer() +"\n\n" );
+				// Might want to add correct answers with : + "\nThe correct answer is: " + cur.getCorrectAns()  +"\n\n" );
+				
 				//dis.setText(result );
 				myr[i].setText(result);
 				//myr[i].setBackgroundColor(Color.RED);
@@ -279,36 +287,12 @@ public class RealTriviaGameActivity extends Activity {
 			
 			i++;
 			result="";
-
 		}
 
-		//		for (int i = 0 ;  i<= tempList.size()-1 ; i++){
-		//			if (tempList.get(i).isAnswerdCorrectly()){
-		//				correct++;
-		//				result+=("you answered question "+ (i+1)+ " correctly with: "  + tempList.get(i).getCorrectAns() +"\n" );
-		//				dis.setText( result);
-		//			}	
-		//			else{
-		//				result+=("you answered question "+ (i+1)+ " incorrectly with: "  +tempList.get(i).getUserAnswer() + " the correct answer is: " + tempList.get(i).getCorrectAns()  +"\n" );
-		//				dis.setText(result);
-		//
-		//			}
-		//		}
-
-
-
-
-		//result+=("you got " + correct + " correct out of " + tempList.size() +"\n"  );
 
 		fin.setText("you got " + correct + " correct out of " + tempList.size() +"\n"  );
 		fin.setBackgroundColor(Color.GRAY);
 		
-		//dis.setText(result);
-
-
-
-
-
 
 		goHome.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -331,8 +315,18 @@ public class RealTriviaGameActivity extends Activity {
 	}
 
 
-
-
+	/**********************************************************************************************
+	 * This method parses input.txt and creates each question object.
+	 * "input.txt" must be formatted correctly
+	 * 	Format must be the "question" separated by an "~"
+	 * 	then followed by the 4 options, with the correct answer last each separated with "~".
+	 * ex:
+	 * What color is the sky?~Green~Yellow~Purple~Blue
+	 * The file must also not end with a "/n" (new-line character).
+	 * 
+	 * This method will throw a IOException.
+	 *
+	 **********************************************************************************************/
 	public void PlayWithRawFiles() throws IOException {   
 
 		String  delims = "[~]";
@@ -353,5 +347,4 @@ public class RealTriviaGameActivity extends Activity {
 		}		
 		is.close();	
 	}
-
 }
