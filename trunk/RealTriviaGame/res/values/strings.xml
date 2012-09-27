@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello">Hello World, RealTriviaGameActivity!</string>
-    <string name="app_name">RealTriviaGame</string>
+    <string name="app_name">UMD Trivia</string>
     <string name="contact_string">For more information about our club or if you want to 
         report a bug please email us at mobileappdevelopersclub@gmail.com\nYou can also check
         out our Facebook page \"UMCP Mobile App Developers\"\n\nWe 
