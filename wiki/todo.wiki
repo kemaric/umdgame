@@ -3,12 +3,11 @@
  * Fix the Background (Splash, Home, Quiz)
  * Go over txt file
  * Format results screen
-  * Don't show correct answers
+  * Don't show correct answers   (DONE)
   * Show question and 'Check' or 'X'   (DONE)
-  * http://androidjava.wordpress.com/2010/09/17/images-in-textview/
  * Get rid of banner at the top   (DONE)
- * Text formatting (Larger text size, different font) 
- * Must select a question to submit and answer  (DONE)
+ * Text formatting (Larger text size, different font)   (DONE)
+ * Must select a question to submit and answer   (DONE)
  * More try-catch statements so you don't see error messages
  * Cannot press back to get to splash screen    (DONE)
  
