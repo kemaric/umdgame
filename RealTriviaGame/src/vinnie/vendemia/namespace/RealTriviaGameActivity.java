@@ -38,6 +38,21 @@ public class RealTriviaGameActivity extends Activity {
 	Typeface font;
 	MediaPlayer sound;
 	
+	
+	public void onPause() {
+	    super.onPause();  // Always call the superclass method first
+
+ 	   sound.pause();
+	    
+	}
+	
+	@Override
+	public void onResume() {
+	    super.onResume();  // Always call the superclass method first
+
+	    sound.start();  
+	}
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -304,10 +319,9 @@ public class RealTriviaGameActivity extends Activity {
 
 		reStart.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				sound.start();
-				Intent openTriviaGame = new 
+				Intent openTriviaGame1 = new 
 						Intent("vinnie.vendemia.namespace.REALTRIVIAGAMEACTIVITY");
-				startActivity(openTriviaGame);
+				startActivity(openTriviaGame1);
 				
 			}
 		});

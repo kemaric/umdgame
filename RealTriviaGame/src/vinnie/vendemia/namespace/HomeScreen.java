@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 public class HomeScreen extends Activity {
 
+	
+
 	Button startQuiz,contactUsActivity, soundButton;
 	Typeface font;
 	TextView banner;
@@ -26,6 +28,20 @@ public class HomeScreen extends Activity {
 
 	}
 
+	public void onPause() {
+	    super.onPause();  // Always call the superclass method first
+	    
+ 	   sound.pause();
+	    
+	}
+	
+	@Override
+	public void onResume() {
+	    super.onResume();  // Always call the superclass method first
+
+	    sound.start();  
+	}
+	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		/*The next two lines of code gets rid of the title and makes the app fullscreen. We want to do it right
@@ -35,13 +51,17 @@ public class HomeScreen extends Activity {
 		setContentView(R.layout.home);
 		sound = MediaPlayer.create(this, R.raw.victory);
 		sound.start();
+		sound.setLooping(true);
 		font = Typeface.createFromAsset(getAssets(), "Dragon.ttf");
 		banner = (TextView) findViewById(R.id.tvBanner);
 		banner.setText(getString(R.string.Banner));
 		banner.setTypeface(font, Typeface.BOLD);
 		startQuiz = (Button) findViewById(R.id.startButton);
+		
 		startQuiz.setOnClickListener(new View.OnClickListener() {
+			
 			public void onClick(View v) {
+				homeActivity=false;
 				Intent openTriviaGame = new 
 						Intent("vinnie.vendemia.namespace.REALTRIVIAGAMEACTIVITY");
 				startActivity(openTriviaGame);
@@ -54,6 +74,7 @@ public class HomeScreen extends Activity {
 
 			public void onClick(View contactView) {
 				// TODO Auto-generated method stub
+				homeActivity=false;
 				Intent goToContact = new Intent("vinnie.vendemia.namespace.CONTACTUS");
 				startActivity(goToContact);
 			}
