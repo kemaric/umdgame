@@ -39,6 +39,24 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".SignIn"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="vinnie.vendemia.namespace.SIGNIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignUp"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="vinnie.vendemia.namespace.SIGNUP" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".RealTriviaGameActivity"
             android:label="@string/app_name" >
             <intent-filter>
