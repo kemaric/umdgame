@@ -1,7 +1,7 @@
 package vinnie.vendemia.namespace;
 
 import android.app.Activity;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -16,8 +16,11 @@ import android.widget.Button;
  * @author bori
  *
  */
+
+
 public class ContactUs extends Activity {
 Button backToHome;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -33,8 +36,9 @@ Button backToHome;
 			 * done viewing this activity*/
 			public void onClick(View goHomeView) {
 				// TODO Auto-generated method stub
-				Intent goBackHome = new Intent("vinnie.vendemia.namespace.HOMESCREEN");
-				startActivity(goBackHome);
+				//Intent goBackHome = new Intent("vinnie.vendemia.namespace.HOMESCREEN");
+				//startActivity(goBackHome);
+				onBackPressed();
 			}
 		});
 	}
