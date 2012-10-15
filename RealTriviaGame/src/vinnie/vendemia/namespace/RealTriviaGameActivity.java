@@ -50,7 +50,9 @@ public class RealTriviaGameActivity extends Activity {
 	public void onResume() {
 	    super.onResume();  // Always call the superclass method first
 
+	    if( HomeScreen.soundOn){
 	    sound.start();  
+	    }
 	}
 	
 	/** Called when the activity is first created. */
@@ -64,7 +66,11 @@ public class RealTriviaGameActivity extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
 		setContentView(R.layout.main);
-		sound = MediaPlayer.create(this, R.raw.victory);
+		//sound = MediaPlayer.create(this, R.raw.victory);
+		sound= HomeScreen.sound;
+		if( HomeScreen.soundOn== false){
+		 sound.pause();
+		}
 		font = Typeface.createFromAsset(getAssets(), "Dragon.ttf");
 
 		question = (TextView) findViewById(R.id.view);
@@ -311,9 +317,10 @@ public class RealTriviaGameActivity extends Activity {
 
 		goHome.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent openTriviaGame = new 
-						Intent("vinnie.vendemia.namespace.HOMESCREEN");
-				startActivity(openTriviaGame);
+				//Intent openTriviaGame = new 
+				//		Intent("vinnie.vendemia.namespace.HOMESCREEN");
+				//startActivity(openTriviaGame);
+				onBackPressed();
 			}
 		});
 
