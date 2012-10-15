@@ -20,7 +20,9 @@ public class HomeScreen extends Activity {
 	Button startQuiz,contactUsActivity, soundButton;
 	Typeface font;
 	TextView banner;
-	MediaPlayer sound;
+	static MediaPlayer sound;
+	static boolean soundOn = true;
+	
 
 	public void ContentManager(Context context) {
 		// Add all of the variables to manage the content such as images and
@@ -39,7 +41,9 @@ public class HomeScreen extends Activity {
 	public void onResume() {
 	    super.onResume();  // Always call the superclass method first
 
-	    sound.start();  
+	    if (soundOn){
+	    sound.start();
+	    }
 	}
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class HomeScreen extends Activity {
 		setContentView(R.layout.home);
 		sound = MediaPlayer.create(this, R.raw.victory);
 		sound.start();
+		
 		sound.setLooping(true);
 		font = Typeface.createFromAsset(getAssets(), "Dragon.ttf");
 		banner = (TextView) findViewById(R.id.tvBanner);
@@ -61,20 +66,18 @@ public class HomeScreen extends Activity {
 		startQuiz.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
-				
 				Intent openTriviaGame = new 
 						Intent("vinnie.vendemia.namespace.REALTRIVIAGAMEACTIVITY");
 				startActivity(openTriviaGame);
 			}
 		});
+		
 		/*I added the "contact us" button to the home screen that way they can navigate to 
 		 *the contact activity*/
 		contactUsActivity = (Button) findViewById(R.id.contactButton);
 		contactUsActivity.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View contactView) {
-				// TODO Auto-generated method stub
-				
 				Intent goToContact = new Intent("vinnie.vendemia.namespace.CONTACTUS");
 				startActivity(goToContact);
 			}
@@ -82,7 +85,7 @@ public class HomeScreen extends Activity {
 
 		soundButton = (Button) findViewById(R.id.soundButton);
 		soundButton.setOnClickListener(new View.OnClickListener() {
-			boolean soundOn = true;
+			//boolean soundOn = true;
 			public void onClick(View contactView) {
 				if (soundOn) {
 					sound.pause();
