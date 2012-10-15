@@ -56,29 +56,10 @@ public class HomeScreen extends Activity {
 		banner = (TextView) findViewById(R.id.tvBanner);
 		banner.setText(getString(R.string.Banner));
 		banner.setTypeface(font, Typeface.BOLD);
-		startQuiz = (Button) findViewById(R.id.startButton);
 		
-		startQuiz.setOnClickListener(new View.OnClickListener() {
-			
-			public void onClick(View v) {
-				homeActivity=false;
-				Intent openTriviaGame = new 
-						Intent("vinnie.vendemia.namespace.REALTRIVIAGAMEACTIVITY");
-				startActivity(openTriviaGame);
-			}
-		});
 		/*I added the "contact us" button to the home screen that way they can navigate to 
 		 *the contact activity*/
-		contactUsActivity = (Button) findViewById(R.id.contactButton);
-		contactUsActivity.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View contactView) {
-				// TODO Auto-generated method stub
-				homeActivity=false;
-				Intent goToContact = new Intent("vinnie.vendemia.namespace.CONTACTUS");
-				startActivity(goToContact);
-			}
-		});
+		
 
 		soundButton = (Button) findViewById(R.id.soundButton);
 		soundButton.setOnClickListener(new View.OnClickListener() {
