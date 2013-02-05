@@ -25,6 +25,7 @@
 
     <Button
         android:id="@+id/startButton"
+        android:onClick="takeQuiz"
         android:layout_width="113dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
@@ -33,6 +34,7 @@
 
     <Button
         android:id="@+id/contactButton"
+        android:onClick="goToContact"
         android:layout_width="113dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="180dp"
@@ -41,6 +43,7 @@
 
     <Button
         android:id="@+id/soundButton"
+        android:onClick="manageSound"
         android:layout_width="113dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

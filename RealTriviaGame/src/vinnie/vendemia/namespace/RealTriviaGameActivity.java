@@ -32,49 +32,37 @@ public class RealTriviaGameActivity extends Activity {
 	RadioGroup RDG1;
 	TextView question,display;
 	Button startQuiz;
+	static Button shareButton;
 	int i = 0;
 	Button submit;
 	Random rgen = new Random();  // Random number generator
 	Typeface font;
 	MediaPlayer sound;
-	
-	
-	public void onPause() {
-	    super.onPause();  // Always call the superclass method first
 
- 	   sound.pause();
-	    
-	}
-	
-	@Override
-	public void onResume() {
-	    super.onResume();  // Always call the superclass method first
 
-	    if( HomeScreen.soundOn){
-	    sound.start();  
-	    }
-	}
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		/*The next two lines of code gets rid of the title and makes the app fullscreen. We want to do it right
 		 * before we set the content view*/
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		
+
 		setContentView(R.layout.main);
 		//sound = MediaPlayer.create(this, R.raw.victory);
 		sound= HomeScreen.sound;
 		if( HomeScreen.soundOn== false){
-		 sound.pause();
+			sound.pause();
 		}
+		
+		
 		font = Typeface.createFromAsset(getAssets(), "Dragon.ttf");
 
 		question = (TextView) findViewById(R.id.view);
-		
+
 		//Sets the font of the question
 		question.setTypeface(font);
 		display = (TextView) findViewById(R.id.display);
@@ -82,18 +70,18 @@ public class RealTriviaGameActivity extends Activity {
 		submit= (Button) findViewById(R.id.button1);
 		submit.setText("Submit");	
 		RDG1 =(RadioGroup)findViewById(R.id.radioGroup1);
-		
+
 		rBtn0 = (RadioButton) findViewById(R.id.radio0);
 		rBtn1 = (RadioButton) findViewById(R.id.radio1);
 		rBtn2 = (RadioButton) findViewById(R.id.radio2);
 		rBtn3 = (RadioButton) findViewById(R.id.radio3);
-		
+
 		//Sets the font of the buttons
 		rBtn0.setTypeface(font);
 		rBtn1.setTypeface(font);
 		rBtn2.setTypeface(font);
 		rBtn3.setTypeface(font);
-		
+
 		RDG1.clearCheck() ; // clear the default selection of  first radio button in radio group
 
 		//open, read, and parse text file in to questions
@@ -138,6 +126,32 @@ public class RealTriviaGameActivity extends Activity {
 
 	}
 
+
+
+
+
+
+	public void onPause() {
+		super.onPause();  // Always call the superclass method first
+
+		if(HomeScreen.soundOn){
+			sound.pause();
+		}
+	}
+
+
+
+	@Override
+	public void onResume() {
+		super.onResume();  // Always call the superclass method first
+
+		if( HomeScreen.soundOn){
+			sound.start();  
+		}
+	}
+
+
+
 	/***************************************************************************************
 	 * uses the global variable "count" to load the count-th question form the 
 	 * tempList. 
@@ -167,9 +181,9 @@ public class RealTriviaGameActivity extends Activity {
 	private int chechQuestion(){
 
 		// finding the radio button selected by the user and save it in a 'temp' radio button
-		
+
 		int id =  RDG1.getCheckedRadioButtonId();
-		
+
 		if (id != -1 ) { 
 			temp =(RadioButton) findViewById(id);
 			/*
@@ -177,7 +191,7 @@ public class RealTriviaGameActivity extends Activity {
 			 * need to put in a null check to make sure a radio button was selected 
 			 * otherwise if user presses the button without selecting a radio button this code will crash
 			 */
-	
+
 			if (temp.getText() != null && temp.getText().equals( tempList.get(count).getCorrectAns() ) ){
 				tempList.get(count).setAnswerdCorrectly(true);
 			}else {
@@ -185,12 +199,12 @@ public class RealTriviaGameActivity extends Activity {
 			}
 			tempList.get(count).setUserAnswer((String) temp.getText());
 			tempList.get(count).setIsAnswerd(true);
-			 
+
 		}
-		
+
 
 		return id ;
-		
+
 	}
 
 
@@ -236,9 +250,10 @@ public class RealTriviaGameActivity extends Activity {
 	 */
 
 	private void printStats2 (){
-	
+
 		String result="";
 		setContentView(R.layout.results);
+		
 		
 		//create and  define our 11 textViews 1 for each questions and one for the final result
 		TextView q1d=(TextView) findViewById(R.id.textView1); 
@@ -252,7 +267,7 @@ public class RealTriviaGameActivity extends Activity {
 		TextView q9d=(TextView) findViewById(R.id.textView9); 
 		TextView q10d=(TextView) findViewById(R.id.textView10); 
 		TextView fin=(TextView) findViewById(R.id.textViewTotal); 
-		
+
 		//define 10 image 1 for each question
 		//q = question , i = image
 		ImageView q1i=(ImageView) findViewById(R.id.imageView1); 
@@ -265,21 +280,28 @@ public class RealTriviaGameActivity extends Activity {
 		ImageView q8i=(ImageView) findViewById(R.id.imageView8); 
 		ImageView q9i=(ImageView) findViewById(R.id.imageView9); 
 		ImageView q10i=(ImageView) findViewById(R.id.imageView10);
-		
-		
+
+
 		// put textVews and ImageVews in Arrays
 		TextView myr[] = {q1d,q2d,q3d,q4d,q5d,q6d,q7d,q8d,q9d,q10d};
 		ImageView myImageArray[] = {q1i,q2i,q3i,q4i,q5i,q6i,q7i,q8i,q9i,q10i};
-		
+
 		tempList.get(count).setUserAnswer((String) temp.getText());
-	
-		
+
+
 		//TextView dis=(TextView) findViewById(R.id.textView1); 
 		//dis.setBackgroundColor(Color.GREEN);
+		
+		
+		
+		
+		
+		
+		
 		Button goHome = (Button) findViewById(R.id.goHome); 
 		Button reStart = (Button) findViewById(R.id.reTakeQuiz); 
-		
-		
+
+
 		correct= 0;
 		int i=0 ; // counter for question numbers 0 indexed
 		for (Questions cur : tempList){
@@ -298,22 +320,23 @@ public class RealTriviaGameActivity extends Activity {
 				result+=(cur.getQuestion()+ "\n");
 				result+=("You answered incorrectly with: "  +cur.getUserAnswer() +"\n\n" );
 				// Might want to add correct answers with : + "\nThe correct answer is: " + cur.getCorrectAns()  +"\n\n" );
-				
+
 				//dis.setText(result );
 				myr[i].setText(result);
 				//myr[i].setBackgroundColor(Color.RED);
 				myr[i].setTextColor(Color.RED);
 				myImageArray[i].setImageResource(R.drawable.x);
 			}	
-			
+
 			i++;
 			result="";
 		}
-
+		
+		HomeScreen.numCorrect = correct;
 
 		fin.setText("you got " + correct + " correct out of " + tempList.size() +"\n"  );
 		fin.setBackgroundColor(Color.GRAY);
-		
+
 
 		goHome.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -329,7 +352,7 @@ public class RealTriviaGameActivity extends Activity {
 				Intent openTriviaGame1 = new 
 						Intent("vinnie.vendemia.namespace.REALTRIVIAGAMEACTIVITY");
 				startActivity(openTriviaGame1);
-				
+
 			}
 		});
 
@@ -368,4 +391,7 @@ public class RealTriviaGameActivity extends Activity {
 		}		
 		is.close();	
 	}
+	
+	
+	
 }

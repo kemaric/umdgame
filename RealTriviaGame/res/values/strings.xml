@@ -8,4 +8,6 @@
         out our Facebook page \"UMCP Mobile App Developers\"\n\nWe 
         appreciate your input! </string>
     <string name="Banner">UMCP Trivia Game</string>
+    <string name="app_id">492001460840080</string>
+    <string name="share">share</string>
 </resources>
