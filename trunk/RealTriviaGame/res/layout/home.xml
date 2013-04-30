@@ -1,52 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/realtriviabackground"
     android:orientation="vertical" >
+    
+    <TableRow
+        android:layout_width="fill_parent"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/tvBanner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="250dp"
-        android:text="UMCP Trivia Game"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#FFCC00" />
+        <ImageView
+            android:id="@+id/imageView1"
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Beta Version 1.0"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:src="@drawable/home_logo"
+            android:layout_height="250dp"
+            android:layout_width="200dp" />
+        
+    </TableRow>
 
-    <Button
-        android:id="@+id/startButton"
-        android:onClick="takeQuiz"
-        android:layout_width="113dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="60dp"
-        android:text="Take the Quiz!" />
+    <TableRow
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
-    <Button
-        android:id="@+id/contactButton"
-        android:onClick="goToContact"
-        android:layout_width="113dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="-48dp"
-        android:text="Contact Us" />
+        <Button
+            android:id="@+id/imageButton2"
+            android:layout_width="60dp"
+            android:layout_height="55dp"
+            android:background="@drawable/start" 
+            android:onClick="takeQuiz"/>
 
-    <Button
-        android:id="@+id/soundButton"
-        android:onClick="manageSound"
-        android:layout_width="113dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Sound ON/OFF" />
+        <Button
+            android:id="@+id/imageButton1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/settings" />
+    </TableRow>
 
-</LinearLayout>
+    <TableRow
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/imageButton3"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:background="@drawable/highscores" />
+    </TableRow>
+
+    <TableRow
+       android:gravity="center">
+
+        <com.facebook.widget.LoginButton
+            android:id="@+id/authButton"
+            android:layout_marginLeft="0dp"
+ 		/>
+        
+         <Button
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          	android:text="share"
+			/>
+    </TableRow>
+    <TableRow 
+        android:gravity="center">
+        
+        <TextView 
+            android:gravity="center"
+            android:text="----or----"/>
+    </TableRow>
+    
+    <TableRow 
+        android:gravity="center">
+        <Button 
+            android:gravity="center"
+            android:text="Create an Account"/>
+    </TableRow>
+    
+    
+</TableLayout>
