@@ -5,7 +5,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.Random;
+import com.facebook.*;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,15 +20,23 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.facebook.FacebookRequestError;
+import com.facebook.HttpMethod;
+import com.facebook.Request;
+import com.facebook.RequestAsyncTask;
+import com.facebook.Response;
+import com.facebook.Session;
 
 public class RealTriviaGameActivity extends Activity {
 
@@ -32,7 +47,9 @@ public class RealTriviaGameActivity extends Activity {
 	RadioGroup RDG1;
 	TextView question,display;
 	Button startQuiz;
-	static Button shareButton;
+	Activity currentActivity;
+
+
 	int i = 0;
 	Button submit;
 	Random rgen = new Random();  // Random number generator
@@ -41,24 +58,33 @@ public class RealTriviaGameActivity extends Activity {
 
 
 
+
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		
+		
+		
 		/*The next two lines of code gets rid of the title and makes the app fullscreen. We want to do it right
 		 * before we set the content view*/
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		setContentView(R.layout.main);
+		
+		
+		this.currentActivity = this;
+		
+		
 		//sound = MediaPlayer.create(this, R.raw.victory);
 		sound= HomeScreen.sound;
 		if( HomeScreen.soundOn== false){
 			sound.pause();
 		}
-		
-		
+
+
 		font = Typeface.createFromAsset(getAssets(), "Dragon.ttf");
 
 		question = (TextView) findViewById(R.id.view);
@@ -253,8 +279,8 @@ public class RealTriviaGameActivity extends Activity {
 
 		String result="";
 		setContentView(R.layout.results);
-		
-		
+
+
 		//create and  define our 11 textViews 1 for each questions and one for the final result
 		TextView q1d=(TextView) findViewById(R.id.textView1); 
 		TextView q2d=(TextView) findViewById(R.id.textView2); 
@@ -291,15 +317,17 @@ public class RealTriviaGameActivity extends Activity {
 
 		//TextView dis=(TextView) findViewById(R.id.textView1); 
 		//dis.setBackgroundColor(Color.GREEN);
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
 		Button goHome = (Button) findViewById(R.id.goHome); 
 		Button reStart = (Button) findViewById(R.id.reTakeQuiz); 
+		Button postScore = (Button) findViewById(R.id.postScore);
+
 
 
 		correct= 0;
@@ -332,11 +360,13 @@ public class RealTriviaGameActivity extends Activity {
 			result="";
 		}
 		
+	
+
 		HomeScreen.numCorrect = correct;
 
 		fin.setText("you got " + correct + " correct out of " + tempList.size() +"\n"  );
 		fin.setBackgroundColor(Color.GRAY);
-
+	
 
 		goHome.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -357,7 +387,9 @@ public class RealTriviaGameActivity extends Activity {
 		});
 
 	}
+	
 
+	
 
 	/**********************************************************************************************
 	 * This method parses input.txt and creates each question object.
@@ -371,6 +403,7 @@ public class RealTriviaGameActivity extends Activity {
 	 * This method will throw a IOException.
 	 *
 	 **********************************************************************************************/
+	
 	public void PlayWithRawFiles() throws IOException {   
 
 		String  delims = "[~]";
@@ -392,6 +425,12 @@ public class RealTriviaGameActivity extends Activity {
 		is.close();	
 	}
 	
-	
-	
+	public void postMyScore() {
+		if(HomeScreen.user == null) {
+			
+		}
+	}
+
+
+
 }
