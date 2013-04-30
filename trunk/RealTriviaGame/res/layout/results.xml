@@ -233,12 +233,12 @@
             android:text="Retake the Quiz" />
 
         <Button
-            android:id="@+id/shareButton"
-            android:onClick="postToFeed"
+            android:id="@+id/postScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/share"
-            android:textStyle="bold" />
+            android:text="Post High Score" 
+            android:onClick="postMyScore"/>
+       
     </LinearLayout>
 
 </LinearLayout>
